@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>28圈 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1e2b3a;
+      line-height: 1.6;
+      padding: 20px 16px 40px;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* header / page title */
+    .page-header {
+      margin-bottom: 32px;
+    }
+
+    .page-header h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0b4f5e;
+      border-left: 6px solid #2aa5a0;
+      padding-left: 18px;
+      line-height: 1.2;
+    }
+
+    .page-header .sub {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #3f6b77;
+      padding-left: 24px;
+    }
+
+    /* intro */
+    .intro-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 18px rgba(16, 88, 94, 0.06);
+      border: 1px solid #daeff2;
+    }
+
+    .intro-card p {
+      margin-bottom: 1em;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-card a {
+      color: #0b7a7a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+
+    .intro-card a:hover {
+      color: #064e4e;
+      text-decoration-color: #2aa5a0;
+    }
+
+    .intro-highlight {
+      background: #e5f5f2;
+      padding: 14px 18px;
+      border-radius: 18px;
+      margin: 18px 0 0;
+      font-size: 0.98rem;
+      border-left: 4px solid #2aa5a0;
+    }
+
+    /* grid cards */
+    .grid-section {
+      margin-bottom: 32px;
+    }
+
+    .grid-section h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #165b66;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-section h2::before {
+      content: "▦";
+      font-size: 1.3rem;
+      color: #2aa5a0;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 520px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 820px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .grid-item {
+      background: white;
+      border-radius: 24px;
+      padding: 22px 20px;
+      transition: box-shadow 0.2s, transform 0.1s;
+      box-shadow: 0 4px 12px rgba(20, 70, 75, 0.05);
+      border: 1px solid #daeff2;
+    }
+
+    .grid-item:hover {
+      box-shadow: 0 8px 22px rgba(22, 91, 102, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .grid-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b4f5e;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .grid-item p {
+      font-size: 0.94rem;
+      color: #2d4852;
+    }
+
+    .grid-item .tag {
+      display: inline-block;
+      background: #d9f0ed;
+      color: #075b5b;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 2px 12px;
+      border-radius: 40px;
+      margin-top: 10px;
+      letter-spacing: 0.2px;
+    }
+
+    /* 提示区 & 相关信息 */
+    .info-area {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 600px) {
+      .info-area {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .info-area > * {
+        flex: 1 1 240px;
+      }
+    }
+
+    .tip-box, .related-box {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid #daeff2;
+      box-shadow: 0 4px 10px rgba(16, 88, 94, 0.04);
+    }
+
+    .tip-box h3, .related-box h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #165b66;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tip-box h3::before {
+      content: "◎";
+      color: #2aa5a0;
+      font-size: 1.2rem;
+    }
+
+    .related-box h3::before {
+      content: "◈";
+      color: #2aa5a0;
+      font-size: 1.2rem;
+    }
+
+    .tip-box p, .related-box p {
+      font-size: 0.93rem;
+      margin-bottom: 0.6em;
+      color: #1f3b44;
+    }
+
+    .related-box ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 4px;
+    }
+
+    .related-box li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 0.92rem;
+      color: #1f3b44;
+      border-bottom: 1px solid #ecf6f5;
+    }
+
+    .related-box li:last-child {
+      border-bottom: none;
+    }
+
+    .related-box li::before {
+      content: "—";
+      color: #2aa5a0;
+      position: absolute;
+      left: 0;
+    }
+
+    .related-box a {
+      color: #0b7a7a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .related-box a:hover {
+      color: #064e4e;
+    }
+
+    /* faq 摘要 */
+    .faq-mini {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 28px;
+      border: 1px solid #daeff2;
+      box-shadow: 0 4px 10px rgba(16, 88, 94, 0.04);
+    }
+
+    .faq-mini h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #165b66;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-mini h2::before {
+      content: "❓";
+      font-size: 1.2rem;
+      color: #2aa5a0;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #ecf6f5;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #0b4f5e;
+      margin-bottom: 4px;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #2d5b63;
+    }
+
+    /* footer */
+    .page-footer {
+      border-top: 1px solid #cde3e5;
+      padding-top: 20px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: #4b727a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .page-footer a {
+      color: #0b7a7a;
+      text-decoration: none;
+      border-bottom: 1px dotted #9ac2c2;
+    }
+
+    .page-footer a:hover {
+      border-bottom: 1px solid #2aa5a0;
+    }
+
+    /* misc */
+    .dot-sep {
+      color: #9abcd0;
+      margin: 0 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="page-header">
+    <h1>28圈 · 信息整理与资料索引</h1>
+    <span class="sub">基于公开资料的内容归档 · 结构式摘要</span>
+  </header>
+
+  <div class="intro-card">
+    <p>
+      本页围绕 <a href="https://main-web-28circle.com">28圈</a> 整理了一系列条目与参考方向，帮助读者快速了解相关概念、常见问题以及可延伸查阅的材料。所有内容均来自公开信息渠道的归纳与重组，以资料卡和分类标签的形式呈现，适合作为知识库的导航起点。
+    </p>
+    <p>
+      这里不提供个性化推荐或引导性结论，仅以平实的说明文字记录已经过梳理的要点。如果你希望更系统地浏览，可以从下方的卡片、提示区和常见问题摘要入手。页面中的所有链接均指向 <a href="https://main-web-28circle.com">28圈</a> 或与其相关的说明性段落。
+    </p>
+    <div class="intro-highlight">
+      📋 当前版本侧重：资料结构化、类别划分、常见疑问摘要。所有内容均经过文本整理，未添加未经核实的断言。
+    </div>
+  </div>
+
+  <!-- 网格卡片：知识库分类 -->
+  <section class="grid-section">
+    <h2>资料分类卡片</h2>
+    <div class="card-grid">
+      <div class="grid-item">
+        <h3>基础档案</h3>
+        <p>涵盖 <a href="https://main-web-28circle.com">28圈</a> 相关的基础定义、发展脉络以及平台性质的关键描述。适合新接触的读者建立初步认知。</p>
+        <span class="tag">概述</span>
+      </div>
+      <div class="grid-item">
+        <h3>功能与模块</h3>
+        <p>梳理主要功能区、导航结构、内容聚合逻辑以及交互方式。通过模块化视角理解信息组织方式。</p>
+        <span class="tag">结构</span>
+      </div>
+      <div class="grid-item">
+        <h3>常见术语</h3>
+        <p>整理在 <a href="https://main-web-28circle.com">28圈</a> 相关讨论中频繁出现的概念、缩写和特定说法，减少阅读障碍。</p>
+        <span class="tag">词汇</span>
+      </div>
+      <div class="grid-item">
+        <h3>索引与参考</h3>
+        <p>汇集可延伸阅读的材料、外部说明文档以及社区整理的长文链接，方便按需查阅。</p>
+        <span class="tag">延伸</span>
+      </div>
+      <div class="grid-item">
+        <h3>版本与变更</h3>
+        <p>记录界面迭代、功能调整以及相关公告的摘要。帮助追踪 <a href="https://main-web-28circle.com">28圈</a> 随时间产生的变化。</p>
+        <span class="tag">更新</span>
+      </div>
+      <div class="grid-item">
+        <h3>使用提示</h3>
+        <p>基于常规使用场景总结的操作建议与注意事项，不构成任何保证，仅作参考。</p>
+        <span class="tag">备忘</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 提示区 & 相关信息区 (并排) -->
+  <div class="info-area">
+    <div class="tip-box">
+      <h3>使用提示</h3>
+      <p>
+        · 本页所有分类卡片均以目录形式呈现，不承诺覆盖全部细节。<br>
+        · 如需查看具体条目对应的原始信息，可前往 <a href="https://main-web-28circle.com">28圈</a> 对照查阅。<br>
+        · 建议根据个人需要组合使用不同卡片，形成自己的索引路径。
+      </p>
+    </div>
+    <div class="related-box">
+      <h3>相关信息</h3>
+      <ul>
+        <li>信息更新周期：不定期整合公开资料</li>
+        <li>内容性质：汇编整理，非官方声明</li>
+        <li>更多参考：<a href="https://main-web-28circle.com">28圈</a> 主页</li>
+        <li>适用对象：希望系统了解相关信息的读者</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h2>常见疑问摘要</h2>
+    <div class="faq-item">
+      <div class="q">问：这里的内容是官方发布的吗？</div>
+      <div class="a">答：不是。本页为独立整理的知识库入口，所有内容均基于公开资料进行结构化摘录，不代替官方说明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">问：卡片中的分类标准是什么？</div>
+      <div class="a">答：分类依据是信息属性与使用场景，例如基础档案、功能模块、术语、参考索引等，力求覆盖不同查阅需求。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">问：如何获取最新信息？</div>
+      <div class="a">答：建议直接访问 <a href="https://main-web-28circle.com">28圈</a> 以获取当前页面与最新公告。本索引会不定期同步公开变化。</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="page-footer">
+    <span>资料整理 · 索引页</span>
+    <span>
+      <a href="https://main-web-28circle.com">28圈</a>
+      <span class="dot-sep">·</span>
+      内容仅供参考
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>
