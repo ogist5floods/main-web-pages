@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 一处熟悉的游戏入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce9d7 0%, #ffddd0 50%, #fad4c2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.6;
+      color: #3a2c25;
+    }
+
+    .card {
+      max-width: 800px;
+      width: 100%;
+      background: #fefcf6;
+      border-radius: 40px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 50, 0.25), 0 8px 16px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 28px;
+      }
+    }
+
+    .hero-line {
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: #856b5a;
+      margin-bottom: 1rem;
+      font-weight: 420;
+      border-left: 4px solid #e6b9a4;
+      padding-left: 1rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 520;
+      color: #442e24;
+      margin-bottom: 1.6rem;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      margin-bottom: 1.8rem;
+      color: #5f4940;
+      background: #faf3ed;
+      padding: 1rem 1.4rem;
+      border-radius: 24px;
+    }
+
+    .lead a {
+      color: #b26542;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid #eccfc0;
+      transition: border 0.15s, background 0.15s;
+      padding: 0 0.1rem;
+    }
+
+    .lead a:hover {
+      border-bottom-color: #b26542;
+      background: #faeae1;
+      border-radius: 6px;
+    }
+
+    .story {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .story p {
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      margin: 2rem 0 2.2rem;
+      padding: 1.2rem 1.5rem;
+      background: #f8efe9;
+      border-radius: 28px;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.98rem;
+    }
+
+    .feature-icon {
+      background: #eacfc1;
+      width: 26px;
+      height: 26px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #4d3429;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-weight: 530;
+      color: #3f2d24;
+      margin-bottom: 0.1rem;
+    }
+
+    .feature-text {
+      color: #5b443a;
+    }
+
+    .scene-note {
+      background: #fff5ed;
+      border-radius: 24px;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #edd9ce;
+    }
+
+    .scene-note p {
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-note .tag {
+      display: inline-block;
+      background: #dbbeae;
+      color: #2f201b;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      letter-spacing: 0.02em;
+      margin-right: 0.3rem;
+      font-weight: 470;
+    }
+
+    .faq-mini {
+      margin: 1.8rem 0 2rem;
+      border-top: 1px dashed #dac3b7;
+      padding-top: 1.4rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #4d3429;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-q::before {
+      content: "▹";
+      color: #b8785d;
+      font-size: 1.1rem;
+    }
+
+    .faq-a {
+      margin-left: 1.3rem;
+      margin-bottom: 0.9rem;
+      color: #5d4940;
+    }
+
+    .gentle-end {
+      margin-top: 2.2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid #ecdace;
+      font-style: normal;
+      color: #6e5549;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .gentle-end span {
+      background: #efe2d9;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #503d33;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: #e7cfc0;
+      color: #2f1f19;
+      padding: 0.55rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 480;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, box-shadow 0.15s;
+      box-shadow: 0 2px 6px rgba(100, 60, 40, 0.05);
+      border: 1px solid #ebd5c7;
+    }
+
+    .btn-soft:hover {
+      background: #dbbcaa;
+      box-shadow: 0 4px 10px rgba(140, 80, 55, 0.08);
+    }
+
+    .footer-remark {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: #957f73;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="hero-line">✦ 一个安稳的起点 · 爱游戏</div>
+  <h1>熟悉的名字，<br>还在原来的位置。</h1>
+
+  <div class="lead">
+    如果你曾习惯在某个页面停留，那么 <a href="https://web-line-igame.com">爱游戏</a> 应该不陌生。
+    它没有花哨的变装，只是干干净净地等在那里，像老朋友一样。
+  </div>
+
+  <div class="story">
+    <p>说实话，现在找个清爽的入口挺费眼神的——要么弹窗太多，要么绕来绕去。而「爱游戏」一直是个挺安静的站点：不塞给你一堆推送，也没有那种让人手忙脚乱的布局。页面打开就是几个主要区域，想找什么，一眼就看到了。</p>
+    <p>你可能只是饭后打开看看新内容，或者周末想追一追老游戏的信息。不用登录也不用注册，直接点进去就行。我身边几个朋友用了好几年，都说「就喜欢它不折腾」。也是一种朴素的信任吧。</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="feature-icon">🕊</span>
+      <div class="feature-text">
+        <strong>轻量响应</strong>
+        手机、平板、电脑，排版自然适应，没有缩放烦恼。
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">📂</span>
+      <div class="feature-text">
+        <strong>栏目直给</strong>
+        没有层层嵌套的菜单，分类都在表面，减少点击路径。
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">🧭</span>
+      <div class="feature-text">
+        <strong>稳定入口</strong>
+        域名多年不变，不会今天一个地址明天一个跳转。
+      </div>
+    </div>
+    <div class="feature-item">
+      <span class="feature-icon">☕</span>
+      <div class="feature-text">
+        <strong>低打扰</strong>
+        无强制弹窗、无自动播放，浏览节奏由你决定。
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-note">
+    <p><span class="tag">日常场景</span><span class="tag">老玩家</span></p>
+    <p>午休时、通勤路上、睡前随手翻翻——<a href="https://web-line-igame.com" style="color:#b26542;text-decoration:none;border-bottom:1px solid #dbb6a5;">爱游戏</a> 一直保持那种「不打扰」的陪伴感。没有红点催促，也没有杂乱的推荐流，你来了就看看，想走也随时。</p>
+  </div>
+
+  <div class="faq-mini">
+    <div class="faq-q">这个网站需要注册吗？</div>
+    <div class="faq-a">不需要。直接打开就能浏览大部分内容，没有强制注册的步骤。</div>
+    <div class="faq-q">手机打开排版会乱吗？</div>
+    <div class="faq-a">不会。页面针对小屏做了适配，字体和按钮大小都挺舒服的。</div>
+    <div class="faq-q">内容更新频率怎样？</div>
+    <div class="faq-a">保持常规更新，但不会刷屏。更适合自己有空了来翻翻。</div>
+  </div>
+
+  <div class="gentle-end">
+    <span>一切如常，刚刚好</span>
+    <a href="https://web-line-igame.com" class="btn-soft">爱游戏</a>
+  </div>
+
+  <div class="footer-remark">
+    入口简洁 · 体验温和
+  </div>
+</div>
+</body>
+</html>
