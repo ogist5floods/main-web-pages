@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 你的日常查询与延伸阅读伙伴</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f4ee;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2e2a24;
+      line-height: 1.75;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      width: 100%;
+      background: #fcfaf6;
+      border-radius: 28px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+      padding: 2.8rem 2.2rem;
+      transition: all 0.2s ease;
+    }
+
+    /* 开场短句 – 像书眉一样 */
+    .opening-line {
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: #9b8e7e;
+      border-left: 3px solid #d6cabc;
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+      font-style: normal;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 520;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: #2c241c;
+      margin-bottom: 1.2rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #6c6053;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid #e8e1d7;
+      padding-bottom: 1.5rem;
+    }
+
+    /* 承接段落 */
+    .story-block p {
+      margin-bottom: 1.4rem;
+    }
+
+    .story-block p:first-of-type {
+      margin-top: 0.2rem;
+    }
+
+    .quote-box {
+      background: #f2ede5;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0 2.2rem 0;
+      border-left: 6px solid #b3a493;
+      font-size: 0.98rem;
+    }
+
+    .quote-box p {
+      margin-bottom: 0.5rem;
+    }
+
+    .quote-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表 — 温和、带脚标感 */
+    .feature-list {
+      list-style: none;
+      margin: 2.2rem 0 1.8rem 0;
+    }
+
+    .feature-list li {
+      padding: 0.6rem 0 0.6rem 2.2rem;
+      position: relative;
+      border-bottom: 1px dashed #e6dfd5;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: "◈";
+      position: absolute;
+      left: 0;
+      color: #9c8b78;
+      font-size: 1.1rem;
+    }
+
+    .feature-list strong {
+      font-weight: 500;
+      color: #3f362e;
+    }
+
+    .feature-desc {
+      color: #4e453b;
+      font-size: 0.95rem;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    /* 提示框 — 类似便签 */
+    .tip-note {
+      background: #f4efe8;
+      border-radius: 20px;
+      padding: 1.5rem 1.8rem;
+      margin: 2.5rem 0;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .tip-note p {
+      margin-bottom: 0.6rem;
+    }
+
+    .tip-note p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .tip-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      background: #d4c9bb;
+      color: #2f2821;
+      padding: 0.1rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* 温和结尾区 */
+    .gentle-end {
+      margin-top: 2.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #e3dad0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem 0.5rem;
+    }
+
+    .gentle-end .tagline {
+      color: #6f6254;
+      font-size: 0.95rem;
+      flex: 1 1 200px;
+    }
+
+    .gentle-end .link-sentence {
+      background: #ede7dd;
+      padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    a {
+      color: #3f3329;
+      text-decoration: none;
+      border-bottom: 1px solid #b7aa9b;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #1a1511;
+      border-bottom-color: #7a6c5d;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .page-wrap {
+        padding: 1.8rem 1.2rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .quote-box {
+        padding: 1.2rem;
+      }
+      .feature-list li {
+        padding-left: 1.5rem;
+      }
+      .gentle-end {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .gentle-end .link-sentence {
+        white-space: normal;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .opening-line {
+        font-size: 0.8rem;
+        padding-left: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- 开场短句：像翻开笔记本第一页 -->
+  <div class="opening-line">翻阅 · 对照 · 延伸</div>
+
+  <h1>日常查询里，渐渐有了形状</h1>
+  <div class="subhead">从零散的搜索，到可以反复回看的角落</div>
+
+  <!-- 承接段落：从生活查资料开始 -->
+  <div class="story-block">
+    <p>你有没有过这样的时刻——忽然想查一款老游戏的发售年份，或者确认某个技能的按键组合，又或者只是想知道一段剧情之后的分支走向。打开手机、输入关键词，翻过几个结果页，最后往往混杂着广告和过时信息。久了，便觉得查点东西像在旧纸堆里翻针。</p>
+
+    <p>后来慢慢养成了一个习惯：遇到拿不准的游戏相关细节，会先去一个固定的地方瞄一眼。那里没有跳动的弹窗，也没有“震惊体”的标题，排版安静得像一本翻旧了的说明书。那个地方就是 <a href="https://web-m-igame.com">爱游戏</a> —— 一个适合慢慢看、反复对的地方。</p>
+
+    <div class="quote-box">
+      <p>“查资料最怕的不是找不到，而是找到了但不确定能不能信。如果有一个地方，内容干净、条目清楚，哪怕只是作为一个对照的基准，也会踏实很多。”</p>
+      <p style="font-size:0.85rem; color:#6c5f51;">—— 某次闲聊时一位朋友的原话</p>
+    </div>
+
+    <p>于是它逐渐变成一个延伸阅读的起点：从一条基础信息，能联想起相关的版本变迁、文化背景，甚至不同地区的差异。不需要一次全记住，但每次回来都能多留意一点。</p>
+  </div>
+
+  <!-- 特点列表：温和的细节 -->
+  <ul class="feature-list">
+    <li>
+      <strong>条目清晰，适合对照</strong>
+      <span class="feature-desc">信息按类别整理，没有多余装饰，快速定位到你想核对的那一行。</span>
+    </li>
+    <li>
+      <strong>内容稳定，减少反复修正</strong>
+      <span class="feature-desc">保持相对稳定的内容结构，降低阅读时的认知负担，不用每次都重新适应。</span>
+    </li>
+    <li>
+      <strong>延伸自然，不强制跳转</strong>
+      <span class="feature-desc">关联条目以参考方式呈现，你可以自行决定是否进一步阅读，节奏完全在自己手里。</span>
+    </li>
+  </ul>
+
+  <!-- 提示框：用便签风格讲使用场景 -->
+  <div class="tip-note">
+    <span class="tip-label">日常使用提示</span>
+    <p>如果只是想快速确认某个名词或日期，可以直接在站内搜索框里输入关键词。习惯用标签导航的话，右上方按类型分类的索引也会更有效率。</p>
+    <p>另外，部分条目下方附有“延伸参考”区域，适合在有余裕的时候点开看看——那种感觉有点像在图书馆里顺着索书号多走了一排书架。</p>
+  </div>
+
+  <!-- 温和结尾 + 链接自然嵌入 -->
+  <div class="gentle-end">
+    <span class="tagline">不着急，一次查一点，慢慢就熟了。</span>
+    <span class="link-sentence">如果你还没试过，不妨从 <a href="https://web-m-igame.com">爱游戏</a> 开始一次安静的查找。</span>
+  </div>
+
+  <!-- 极简装饰性说明（非内容主体，仅作节奏收尾） -->
+  <div style="margin-top: 2rem; font-size:0.75rem; color:#b8ab9d; text-align: right; border-top: 1px solid #f0eae2; padding-top: 1rem; letter-spacing: 0.03rem;">
+    <span style="opacity:0.5;">……</span>
+  </div>
+</div>
+</body>
+</html>
